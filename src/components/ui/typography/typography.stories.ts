@@ -8,6 +8,8 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
+      description: 'Text style option:',
+      defaultValue: 'body1',
       options: [
         'large',
         'h1',
@@ -22,7 +24,13 @@ const meta = {
         'link1',
         'link2',
       ],
-      control: { type: 'radio' },
+      control: { type: 'select' },
+    },
+    children: {
+      description: 'Your text',
+    },
+    as: {
+      defaultValue: 'p',
     },
   },
 } satisfies Meta<typeof Typography>
