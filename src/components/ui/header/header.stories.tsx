@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '../button'
-
 import imageLogo from './img/Logo.png'
 
 import { Header } from './'
@@ -23,13 +21,14 @@ type Story = StoryObj<typeof meta>
 
 export const HeaderSingIn: Story = {
   args: {
-    children: <Button>{'Sing In'}</Button>,
+    isAuth: false,
     imagePath: imageLogo,
   },
 }
-export const Header2: Story = {
+
+export const HeaderWithDropDownMenu: Story = {
   args: {
-    children: <Button>{'Sing In'}</Button>,
+    isAuth: true,
     imagePath: 'https://imgcorp.com/dominate/home/img/img-logo-white.png',
   },
 }
