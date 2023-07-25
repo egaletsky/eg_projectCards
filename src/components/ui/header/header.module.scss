@@ -1,0 +1,23 @@
+.wrapperHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1280px;
+  height: 60px;
+  padding: 0 136px;
+
+  background-color: var(--color-dark-500);
+
+  .image {
+    max-height: 36px;
+
+    @media (width <= 575px) {
+      width: 120px;
+    }
+  }
+
+  @media (width <= 991px) {
+    padding: 0 10%;
+  }
+}
