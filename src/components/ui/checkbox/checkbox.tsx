@@ -7,6 +7,8 @@ import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 
 import s from './checkbox.module.scss'
+import checkboxChecked from './img/checked.svg'
+// import checkboxUnchecked from './img/unchecked.svg'
 
 export type CheckboxProps = {
   checked: boolean
@@ -16,16 +18,27 @@ export type CheckboxProps = {
 }
 
 export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label }) => {
+  const classs = s.label + ' ' + disabled ? s.disabled : ''
+
+  // eslint-disable-next-line no-console
+  console.log(classs)
+
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <CheckboxRadix.Root className="CheckboxRoot" defaultChecked id="c1">
-        <CheckboxRadix.Indicator className="CheckboxIndicator">
-          <CheckIcon />
-        </CheckboxRadix.Indicator>
-      </CheckboxRadix.Root>
-      <label className="Label" htmlFor="c1">
-        Accept terms and conditions.
-      </label>
-    </div>
+    <LabelRadix.Root className={s.label + ' ' + disabled && s.disabled}>
+      {/*<LabelRadix.Root className={s.label + ' ' + disabled && s.disabled}>*/}
+      <div className={`{s.buttonWrapper} {disabled && s.disabled}`}>
+        <CheckboxRadix.Root
+          className={s.root}
+          checked={checked}
+          onCheckedChange={() => onChange(!checked)}
+          disabled={disabled}
+        >
+          <CheckboxRadix.Indicator className={s.indicator}>
+            <img src={checkboxChecked} />
+          </CheckboxRadix.Indicator>
+        </CheckboxRadix.Root>
+      </div>
+      {label}
+    </LabelRadix.Root>
   )
 }
