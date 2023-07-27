@@ -20,7 +20,9 @@ export type TypographyProps<T extends ElementType = 'p'> = {
     | 'link2'
 } & ComponentPropsWithoutRef<T>
 
-export const Typography = <T extends ElementType = 'p'>(props: TypographyProps<T>) => {
+export const Typography = <T extends ElementType = 'p'>(
+  props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
+) => {
   const { className, variant = 'body1', as: Component = 'p', ...rest } = props
 
   return <Component className={`${s[variant]} ${className}`} {...rest} />
