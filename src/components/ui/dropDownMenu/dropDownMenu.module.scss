@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+
+  .wrapperTitle {
+    display: flex;
+    align-items: center;
+
+    .title {
+      font-weight: 700;
+      border-bottom: dashed 2px #fff;
+    }
+  }
+
+  .image {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
