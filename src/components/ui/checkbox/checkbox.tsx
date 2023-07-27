@@ -1,6 +1,3 @@
-/*import * as Checkbox from '@radix-ui/react-checkbox'
-import { CheckIcon } from '@radix-ui/react-icons'*/
-
 import { FC } from 'react'
 
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
@@ -10,6 +7,7 @@ import { Typography } from '../typography'
 
 import s from './checkbox.module.scss'
 import checkboxChecked from './img/checked.svg'
+import checkboxDisabledChecked from './img/disableChecked.svg'
 
 export type CheckboxProps = {
   checked: boolean
@@ -34,7 +32,10 @@ export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label
           disabled={disabled}
         >
           <CheckboxRadix.Indicator className={s.indicator}>
-            <img src={checkboxChecked} />
+            <img
+              src={disabled ? checkboxDisabledChecked : checkboxChecked}
+              alt={'checkbox image'}
+            />
           </CheckboxRadix.Indicator>
         </CheckboxRadix.Root>
       </div>
