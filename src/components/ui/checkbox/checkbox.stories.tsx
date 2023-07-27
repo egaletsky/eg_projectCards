@@ -31,7 +31,6 @@ export const Default: Story = {
     return (
       <>
         <Checkbox {...args} checked={checked} onChange={() => setChecked(!checked)} />
-        <div>{checked ? 'on' : 'off'}</div>
       </>
     )
   },
@@ -50,7 +49,22 @@ export const Disabled: Story = {
     return (
       <>
         <Checkbox {...args} checked={checked} onChange={() => setChecked(!checked)} />
-        <div>{checked ? 'on' : 'off'}</div>
+      </>
+    )
+  },
+}
+
+export const NoWords: Story = {
+  args: {
+    checked: true,
+  },
+
+  render: args => {
+    const [checked, setChecked] = useState(false)
+
+    return (
+      <>
+        <Checkbox {...args} checked={checked} onChange={() => setChecked(!checked)} />
       </>
     )
   },

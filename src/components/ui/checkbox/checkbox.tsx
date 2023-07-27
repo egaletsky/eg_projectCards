@@ -6,9 +6,10 @@ import { FC } from 'react'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 
+import { Typography } from '../typography'
+
 import s from './checkbox.module.scss'
 import checkboxChecked from './img/checked.svg'
-// import checkboxUnchecked from './img/unchecked.svg'
 
 export type CheckboxProps = {
   checked: boolean
@@ -18,15 +19,14 @@ export type CheckboxProps = {
 }
 
 export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label }) => {
-  const classs = s.label + ' ' + disabled ? s.disabled : ''
-
-  // eslint-disable-next-line no-console
-  console.log(classs)
+  const classLabel = disabled ? s.label + ' ' + s.disabled : s.label
+  const classButtonWrapper = disabled ? s.buttonWrapper + ' ' + s.disabled : s.buttonWrapper
+  // const classLabel = clsx(s.label, disabled && s.disabled)
+  // const classButtonWrapper = clsx(s.buttonWrapper, disabled && s.disabled)
 
   return (
-    <LabelRadix.Root className={s.label + ' ' + disabled && s.disabled}>
-      {/*<LabelRadix.Root className={s.label + ' ' + disabled && s.disabled}>*/}
-      <div className={`{s.buttonWrapper} {disabled && s.disabled}`}>
+    <LabelRadix.Root className={classLabel}>
+      <div className={classButtonWrapper}>
         <CheckboxRadix.Root
           className={s.root}
           checked={checked}
@@ -38,7 +38,7 @@ export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label
           </CheckboxRadix.Indicator>
         </CheckboxRadix.Root>
       </div>
-      {label}
+      <Typography variant="body2">{label}</Typography>
     </LabelRadix.Root>
   )
 }

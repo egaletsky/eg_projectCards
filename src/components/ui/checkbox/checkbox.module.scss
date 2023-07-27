@@ -52,16 +52,16 @@ button {
 
   border-radius: 50%;
 
+  &:hover:not(.disabled) {
+    background-color: var(--color-warning-100);
+  }
+
   &:focus:not(.disabled) {
     background-color: var(--color-info-300);
   }
 
   &:active:not(.disabled) {
     background-color: var(--color-warning-500);
-  }
-
-  &:hover:not(.disabled) {
-    background-color: var(--color-warning-100);
   }
 
   &.disabled {
