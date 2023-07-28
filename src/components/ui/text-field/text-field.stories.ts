@@ -44,3 +44,11 @@ export const Disabled: Story = {
     disabled: true,
   },
 }
+
+export const Search: Story = {
+  args: {
+    label: 'Text',
+    type: 'search',
+    placeholder: 'text',
+  },
+}
