@@ -100,10 +100,6 @@ div {
   background: transparent;
   border: 0;
   outline: 0;
-
-  &::-ms-clear {
-    display: none;
-  }
 }
 
 .label {
@@ -117,4 +113,8 @@ div {
 
 .p10 {
   padding-left: 41px;
+}
+
+.isDisable {
+  opacity: 0.4;
 }

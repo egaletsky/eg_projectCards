@@ -16,6 +16,7 @@ export const Text: Story = {
     label: 'Text',
     type: 'text',
     placeholder: 'text',
+    disabled: false,
   },
 }
 
@@ -24,6 +25,7 @@ export const Password: Story = {
     label: 'Password',
     type: 'password',
     placeholder: 'password',
+    disabled: false,
   },
 }
 
@@ -33,6 +35,7 @@ export const Error: Story = {
     type: 'error',
     placeholder: 'error',
     errorMessage: 'Error!',
+    disabled: false,
   },
 }
 
@@ -50,5 +53,6 @@ export const Search: Story = {
     label: 'Text',
     type: 'search',
     placeholder: 'text',
+    disabled: false,
   },
 }

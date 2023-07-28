@@ -46,7 +46,7 @@ export const TextField = ({
           {...rest}
         />
         {type === 'search' && (
-          <span>
+          <span className={`${disabled && s.isDisable}`}>
             <div className={s.search}>
               <Search />
             </div>
@@ -61,7 +61,8 @@ export const TextField = ({
             onClick={() => {
               setPasswordIsShown(value => !value)
             }}
-            className={s.rightIcon}
+            className={`${s.rightIcon} ${disabled && s.isDisable}`}
+            disabled={disabled}
           >
             {!passwordIsShown ? <Eye /> : <CloseEye />}
           </button>
