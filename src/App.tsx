@@ -1,3 +1,8 @@
 export function App() {
-  return <div>Hello 111!</div>
+  return (
+    <>
+      <div>Hello 111!</div>
+      <div>Hello 222!</div>
+    </>
+  )
 }
