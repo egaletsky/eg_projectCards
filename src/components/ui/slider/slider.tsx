@@ -4,9 +4,9 @@ import * as SliderRadix from '@radix-ui/react-slider'
 
 import s from './slider.module.scss'
 
-export type CardProps = {} & ComponentPropsWithoutRef<typeof SliderRadix.Root>
+export type SliderProps = {} & ComponentPropsWithoutRef<typeof SliderRadix.Root>
 
-export const Slider = ({ ...props }: CardProps) => {
+export const Slider = ({ ...props }: SliderProps) => {
   return (
     <div className={s.container}>
       <span className={s.value}>{props?.value?.[0]}</span>

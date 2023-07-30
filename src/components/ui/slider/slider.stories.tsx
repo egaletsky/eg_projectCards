@@ -16,7 +16,6 @@ type Story = StoryObj<typeof Slider>
 export const Default: Story = {
   args: {
     value: [25, 75],
-    defaultValue: [25, 75],
   },
   render: args => {
     const [value, setValue] = useState(args.value)
