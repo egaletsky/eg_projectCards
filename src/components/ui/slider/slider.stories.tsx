@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Slider } from './'
@@ -12,5 +14,22 @@ export default meta
 type Story = StoryObj<typeof Slider>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    value: [25, 75],
+    defaultValue: [25, 75],
+  },
+  render: args => {
+    const [value, setValue] = useState(args.value)
+
+    return (
+      <>
+        <Slider
+          value={value}
+          onValueChange={prev => {
+            setValue(prev)
+          }}
+        />
+      </>
+    )
+  },
 }
