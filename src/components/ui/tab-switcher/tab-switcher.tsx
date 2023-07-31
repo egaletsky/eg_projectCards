@@ -69,7 +69,9 @@ export const TabSwitcher: FC<TabSwitherProps> = ({
             value={tab.value}
             disabled={tab.disabled}
           >
-            <Typography variant="body1">{tab.title}</Typography>
+            <Typography as={'span'} variant="body1">
+              {tab.title}
+            </Typography>
           </TabsRadixUI.Trigger>
         ))}
       </TabsRadixUI.List>
