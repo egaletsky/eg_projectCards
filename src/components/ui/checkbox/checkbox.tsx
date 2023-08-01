@@ -14,6 +14,7 @@ export type CheckboxProps = {
   onValueChange: (checked: boolean) => void
   disabled?: boolean
   label?: string
+  id?: string
 }
 
 export const Checkbox: FC<CheckboxProps> = ({ checked, onValueChange, disabled, label }) => {

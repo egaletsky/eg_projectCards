@@ -1,30 +1,33 @@
-import { useController, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 import { Button } from '../../ui/button'
-import { Checkbox } from '../../ui/checkbox'
+import { ControlledCheckbox } from '../../ui/controlled/controlled-checkbox'
 import { TextField } from '../../ui/text-field'
 
-type FormValues = {
-  email: string
-  password: string
-  search: string
-  rememberMe: boolean
-}
+const loginSchema = z.object({
+  email: z.string().nonempty().email(),
+  password: z.string().nonempty('Password is required').min(3),
+  rememberMe: z.boolean().default(true),
+  search: z.string(),
+})
+
+export type LoginFormSchema = z.infer<typeof loginSchema>
 
 export const LoginForm = () => {
-  const { register, handleSubmit, control } = useForm<FormValues>()
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<LoginFormSchema>({
+    resolver: zodResolver(loginSchema),
+  })
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = (data: LoginFormSchema) => {
     console.log(data)
   }
-
-  const {
-    field: { value: valueCheck, onChange: onCheckChange },
-  } = useController({
-    name: 'rememberMe',
-    control,
-    defaultValue: false,
-  })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,16 +37,17 @@ export const LoginForm = () => {
         label={'email'}
         type={'fsdfsd'}
         placeholder={'sdffsd'}
+        errorMessage={errors.email?.message}
       />
 
-      <TextField {...register('password')} label={'password'} type={'password'} />
-      <TextField {...register('search')} label={'search'} type={'search'} />
-      <Checkbox
-        onValueChange={onCheckChange}
-        checked={valueCheck}
-        {...register('rememberMe')}
-        label={'remember me'}
+      <TextField
+        {...register('password')}
+        label={'password'}
+        type={'password'}
+        errorMessage={errors.password?.message}
       />
+      <TextField {...register('search')} label={'search'} type={'search'} />
+      <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
       <Button type="submit">Submit</Button>
     </form>
   )
