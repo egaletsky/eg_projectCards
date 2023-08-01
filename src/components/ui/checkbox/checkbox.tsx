@@ -11,12 +11,13 @@ import checkboxDisabledChecked from './img/disableChecked.svg'
 
 export type CheckboxProps = {
   checked: boolean
-  onChange: (checked: boolean) => void
+  onValueChange: (checked: boolean) => void
   disabled?: boolean
   label?: string
+  id?: string
 }
 
-export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label }) => {
+export const Checkbox: FC<CheckboxProps> = ({ checked, onValueChange, disabled, label }) => {
   const classLabel = disabled ? s.label + ' ' + s.disabled : s.label
   const classButtonWrapper = disabled ? s.buttonWrapper + ' ' + s.disabled : s.buttonWrapper
   // const classLabel = clsx(s.label, disabled && s.disabled)
@@ -28,7 +29,7 @@ export const Checkbox: FC<CheckboxProps> = ({ checked, onChange, disabled, label
         <CheckboxRadix.Root
           className={s.root}
           checked={checked}
-          onCheckedChange={() => onChange(!checked)}
+          onCheckedChange={onValueChange}
           disabled={disabled}
         >
           <CheckboxRadix.Indicator className={s.indicator}>
